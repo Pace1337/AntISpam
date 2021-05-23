@@ -9,13 +9,14 @@ public final class Main extends JavaPlugin {
 
     public static Plugin instance;
 
+
     @Override
     public void onEnable() {
+        instance = this;
         Bukkit.getServer().getPluginManager().registerEvents(new AntiSpam(), this);
     }
 
     @Override
     public void onDisable() {
-        // Default
     }
 }
