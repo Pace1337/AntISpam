@@ -3,3 +3,6 @@ version: ${project.version}
 main: dev.pace.antispam.Main
 api-version: 1.16
 authors: [Pace]
+permissions:
+  antispam.bypass:
+    description: For ones that want to bypass the permission.

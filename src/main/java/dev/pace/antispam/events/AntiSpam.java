@@ -18,6 +18,10 @@ public class AntiSpam implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String msg = e.getMessage();
+        if (p.isOp())
+            return;
+        if (p.hasPermission("antispam.bypass"))
+            return;
         if (!last.containsKey(p)) {
             last.put(p, msg);
         } else {
