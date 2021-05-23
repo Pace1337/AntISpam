@@ -16,5 +16,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        // Default
     }
 }
