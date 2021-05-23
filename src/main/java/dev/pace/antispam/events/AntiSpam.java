@@ -49,7 +49,7 @@ public class AntiSpam implements Listener {
             }
         }
         if (actions >= 3) {
-            // Cancel capslock.
+            // Cancel capslock
             e.setCancelled(true);
             p.sendMessage("§7[§4§lAntiSpam§7]§7 Please refrain from using that much caps lock!");
         }
