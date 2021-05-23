@@ -24,7 +24,7 @@ public class AntiSpam implements Listener {
             if (msg.equalsIgnoreCase(last.get(p))) {
                 e.setCancelled(true);
                 p.sendMessage("§7[§b§lAntiSpam§7]§7 Please do not repeat your messages.");
-                // This way people are not allowed to repeat their messages, like bro, we already saw your message.
+                // This way people are not allowed to repeat their messages, like bro, we already saw your message. :AndyIsCool:
                 return;
             }
         }
@@ -34,7 +34,7 @@ public class AntiSpam implements Listener {
         }
 
         if (System.currentTimeMillis() - cooldown.get(p.getUniqueId()) > 2000) {
-            // Chat is allowed, update cooldown again.
+            // Chat is allowed, update cooldown again. :thumb:
             cooldown.put(p.getUniqueId(), System.currentTimeMillis());
         } else {
             // Cancel monkeys from spamming. :thumb:
@@ -51,7 +51,7 @@ public class AntiSpam implements Listener {
             }
         }
         if (actions >= 3) {
-            // Cancel capslock
+            // Cancel capslock :salamalaka:
             e.setCancelled(true);
             p.sendMessage("§7[§b§lAntiSpam§7]§7 Please do not use that much capslock.");
         }
