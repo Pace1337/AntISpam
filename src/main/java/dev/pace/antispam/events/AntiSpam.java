@@ -35,6 +35,7 @@ public class AntiSpam implements Listener {
 
         if (!cooldown.containsKey(p.getUniqueId())) {
             cooldown.put(p.getUniqueId(), System.currentTimeMillis());
+            return;
         }
 
         if (System.currentTimeMillis() - cooldown.get(p.getUniqueId()) > 2000) {
