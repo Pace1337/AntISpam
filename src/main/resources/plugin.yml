@@ -1,7 +1,7 @@
 name: AntiSpam
 version: ${project.version}
 main: dev.pace.antispam.Main
-api-version: 1.16
+api-version: 1.13
 authors: [Pace]
 permissions:
   antispam.bypass:
