@@ -1,5 +1,7 @@
 package dev.pace.antispam.events;
 
+import dev.pace.antispam.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,8 +29,7 @@ public class AntiSpam implements Listener {
         } else {
             if (msg.equalsIgnoreCase(last.get(p))) {
                 e.setCancelled(true);
-                p.sendMessage("§7[§b§lAntiSpam§7]§7 Please do not repeat your messages.");
-                // This way people are not allowed to repeat their messages, like bro, we already saw your message. :AndyIsCool:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.repeat")));
                 return;
             }
         }
@@ -39,12 +40,10 @@ public class AntiSpam implements Listener {
         }
 
         if (System.currentTimeMillis() - cooldown.get(p.getUniqueId()) > 2000) {
-            // Chat is allowed, update cooldown again. :thumb:
             cooldown.put(p.getUniqueId(), System.currentTimeMillis());
         } else {
-            // Cancel monkeys from spamming. :thumb:
             e.setCancelled(true);
-            p.sendMessage("§7[§b§lAntiSpam§7]§7 You are not allowed to spam. Wait 2 seconds until sending another message.");
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.spam")));
             return;
         }
 
@@ -56,9 +55,8 @@ public class AntiSpam implements Listener {
             }
         }
         if (actions >= 3) {
-            // Cancel capslock :salamalaka:
             e.setCancelled(true);
-            p.sendMessage("§7[§b§lAntiSpam§7]§7 Please do not use that much capslock.");
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.caps")));
         }
     }
 }
