@@ -1,19 +1,17 @@
 package dev.pace.antispam.events;
 
-import dev.pace.antispam.Main;
+import dev.pace.antispam.EnhancedAntiSpam;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class AntiSpam implements Listener {
 
     private HashMap<Player, String> last = new HashMap<>(); // Anti repeat message.
-    private ArrayList<Player> antispam = new ArrayList<>();
     private HashMap<UUID, Long> cooldown = new HashMap<>();
 
     @EventHandler
@@ -29,7 +27,7 @@ public class AntiSpam implements Listener {
         } else {
             if (msg.equalsIgnoreCase(last.get(p))) {
                 e.setCancelled(true);
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.repeat")));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', EnhancedAntiSpam.config.getString("antispam.repeat")));
                 return;
             }
         }
@@ -39,24 +37,24 @@ public class AntiSpam implements Listener {
             return;
         }
 
-        if (System.currentTimeMillis() - cooldown.get(p.getUniqueId()) > 2000) {
+        if (System.currentTimeMillis() - cooldown.get(p.getUniqueId()) > 3000) {
             cooldown.put(p.getUniqueId(), System.currentTimeMillis());
         } else {
             e.setCancelled(true);
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.spam")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', EnhancedAntiSpam.config.getString("antispam.spam")));
             return;
         }
 
-        String[] array = msg.split(" ");
+        String[] array = msg.split("");
         int actions = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(array[i].toUpperCase())) {
                 actions++;
             }
         }
-        if (actions >= 3) {
+        if (actions >= 20) {
             e.setCancelled(true);
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.config.getString("antispam.caps")));
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', EnhancedAntiSpam.config.getString("antispam.caps")));
         }
     }
 }

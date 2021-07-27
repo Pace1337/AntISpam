@@ -1,0 +1,12 @@
+# To bypass all the antispam system you can use the permission antispam.bypass or be a operator.
+antispam:
+  repeat: "&7[&b&lAntiSpam&7]&7 Please do not repeat your messages."
+  spam: "&7[&b&lAntiSpam&7]&7 You are not allowed to spam. Wait 2 seconds until sending another message."
+  caps: "&7[&b&lAntiSpam&7]&7 Please do not use that much capslock."
+
+commands:
+  nopermission1: "&7[&b&lAntiSpam&7]&7 You do not have permission to execute this command. (antispam.command)"
+  nopermission2: "&7[&b&lAntiSpam&7]&7 You do not have permission to reload plugin configuration. (antispam.admin)"
+  nopermission3: "&7[&b&lAntiSpam&7]&7 You do not have permission to clear the chat (antispam.clearchat)"
+  reloadcomplete: "&7[&b&lAntiSpam&7]&7 Plugin configuration has been successfully reloaded!"
+  clearchat: "&7[&b&lClearChat&7]&7 Chat has been cleared by a staff member."
