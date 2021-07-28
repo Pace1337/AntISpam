@@ -14,6 +14,7 @@ public class AntiSpam implements Listener {
     private HashMap<Player, String> last = new HashMap<>(); // Anti repeat message.
     private HashMap<UUID, Long> cooldown = new HashMap<>();
 
+
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();

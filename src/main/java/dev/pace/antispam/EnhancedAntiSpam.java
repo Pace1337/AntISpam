@@ -1,6 +1,7 @@
 package dev.pace.antispam;
 
 import dev.pace.antispam.commands.EnhancedAntiSpamCommand;
+import dev.pace.antispam.events.AntiCommandSpam;
 import dev.pace.antispam.events.AntiSpam;
 import dev.pace.antispam.updates.Metrics;
 import dev.pace.antispam.updates.UpdateChecker;
@@ -9,12 +10,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 public final class EnhancedAntiSpam extends JavaPlugin {
 
     public static FileConfiguration config;
     public static EnhancedAntiSpam instance = null;
+    public HashMap<String, Long> commandCooldowns = new HashMap<>();
 
     public static EnhancedAntiSpam getInstance() {
         return instance;
@@ -37,6 +40,7 @@ public final class EnhancedAntiSpam extends JavaPlugin {
         config.addDefault("update-checker", true);
         this.saveConfig();
         Bukkit.getServer().getPluginManager().registerEvents(new AntiSpam(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new AntiCommandSpam(this), this);
         getCommand("antispam").setExecutor(new EnhancedAntiSpamCommand()); // Aliases: EnhancedAntiSpam
         new Metrics(this, 12246);
 
